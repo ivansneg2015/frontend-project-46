@@ -4,7 +4,7 @@
   "type": "module",
   "description": "[![Actions Status](https://github.com/ivansneg2015/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ivansneg2015/frontend-project-46/actions)",
   "main": "index.js",
-   "bin": {
+  "bin": {
     "gendiff": "./bin/gendiff.js"
   },
   "scripts": {
@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^12.0.0"
+    "commander": "^12.0.0",
+    "lodash": "^4.17.21"
   }
 }
