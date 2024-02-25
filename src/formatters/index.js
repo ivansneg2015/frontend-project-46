@@ -1,18 +1,18 @@
-const getFormat = (diffTree) => {
-  const formattedDiff = diffTree.map((node) => {
-    switch (node.status) {
-      case 'added':
-        return `+ ${node.key}: ${node.value}`;
-      case 'removed':
-        return `- ${node.key}: ${node.value}`;
-      case 'changed':
-        return `- ${node.key}: ${node.oldValue}\n+ ${node.key}: ${node.newValue}`;
-      default:
-        return `  ${node.key}: ${node.value}`;
-    }
-  });
+import getFormatJson from './formatJson.js';
+import formatPlain from './formatPlain.js';
+import getFormatStylish from './formatStylish.js';
 
-  return `{\n${formattedDiff.join('\n')}\n}`;
+const getFormat = (abstractSyntaxTree, format) => {
+  switch (format) {
+    case 'json':
+      return getFormatJson(abstractSyntaxTree);
+    case 'plain':
+      return formatPlain(abstractSyntaxTree);
+    case 'stylish':
+      return getFormatStylish(abstractSyntaxTree);
+    default:
+      throw new Error(`Error: "${format}" - this format is not supported`);
+  }
 };
 
 export default getFormat;
