@@ -10,12 +10,14 @@ describe('check output', () => {
     ['file1.json', 'file2.yaml', 'plainFormatTest.txt', 'plain'],
     ['file1.yaml', 'file2.json', 'jsonFormatTest.txt', 'json'],
   ];
-  test.each(testFormats)(
-    'formatters work',
-    (file1, file2, expectedFile, format = 'stylish') => {
-      const result = genDiff(file1, file2, format);
-      const expected = readFile(expectedFile);
-      expect(result).toEqual(expected);
-    },
-  );
+
+  testFormats.forEach(([file1, file2, expectedFile, format = 'stylish']) => {
+    describe(`${file1} and ${file2} with ${format} format`, () => {
+      test(`should generate correct ${format} diff`, () => {
+        const result = genDiff(file1, file2, format);
+        const expected = readFile(expectedFile);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
 });
