@@ -35,9 +35,7 @@ jobs:
       - run: make install
       - run: make lint
 <<<<<<< HEAD
-      #- run: make test
-=======
-        # - run: make test
+      - run: make test
 >>>>>>> 53c207b (tests)
       - name: Test & publish code coverage
         # Publish code coverage on Code Climate
